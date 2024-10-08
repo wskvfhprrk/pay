@@ -1,0 +1,14 @@
+package com.hejz.pay.wx.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Amount {
+    private Integer total;
+}
