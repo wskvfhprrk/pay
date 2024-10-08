@@ -8,7 +8,9 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 ```
-2.yml中配置支付需要的数据
+2.yml中配置支付需要的数据（demo没有`application.yml`文件，需要自己配置）
+
+支付配置：
 ```yaml
 pay:
   #微信支付使用到的数据
@@ -59,7 +61,7 @@ public class NativeTest {
     }
 }
 ```
-4.支付回调处理,只需要调用`wxNativePayTemplate.wxPayNotice(event)`处理即可，Event为已经封装好的微信支付实体类，注意微信[支付规则](https://pay.weixin.qq.com/docs/merchant/apis/native-payment/payment-notice.html):
+4.支付回调处理,只需要调用`wxNativePayTemplate.wxPayNotice(event)`处理即可，Event为已经封装好的微信支付实体类，注意微信[微信支付应答规则](https://pay.weixin.qq.com/docs/merchant/apis/native-payment/payment-notice.html):
 >通知应答
 >
 >接收成功： HTTP应答状态码需返回200或204，无需返回应答报文。
