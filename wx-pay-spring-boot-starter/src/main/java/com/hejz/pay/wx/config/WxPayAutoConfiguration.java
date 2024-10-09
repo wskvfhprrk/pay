@@ -10,16 +10,22 @@ import com.wechat.pay.contrib.apache.httpclient.auth.WechatPay2Validator;
 import com.wechat.pay.contrib.apache.httpclient.cert.CertificatesManager;
 import com.wechat.pay.contrib.apache.httpclient.util.PemUtil;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import java.io.FileInputStream;
 import java.security.PrivateKey;
 
 @Configuration
 @EnableConfigurationProperties(WxPayProperties.class)
+@Import(WebInit.class)
 public class WxPayAutoConfiguration {
+    @Autowired
+    private ApplicationContext applicationContext;
     public CloseableHttpClient httpClient(WxPayProperties wxPayProperties) {
 //        System.out.println("-------->创建了CloseableHttpClient对象");
         try {
@@ -46,6 +52,6 @@ public class WxPayAutoConfiguration {
     @Bean
     public WxNativePayTemplate wxNativePayTemplate(WxPayProperties wxPayProperties) {
 //        System.out.println("-------->创建了WxNativePayTemplate对象");
-        return new WxNativePayTemplate(wxPayProperties, httpClient(wxPayProperties));
+        return new WxNativePayTemplate(wxPayProperties, httpClient(wxPayProperties),applicationContext);
     }
 }
