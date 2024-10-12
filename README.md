@@ -41,23 +41,23 @@ public class NativeTest {
     @Test
     public void createOrder(){
         String s = wxNativePayTemplate.createOrder(1, orderId, "订单18");
-        System.out.println(s);
+        log.info(s);
     }
     @Test
     public void query(){
         String s = wxNativePayTemplate.queryOrder(orderId);
-        System.out.println(s);
+        log.info(s);
     }
 
     @Test
     public void refunds(){
         String refunds = wxNativePayTemplate.refunds(1, 1, orderId);
-        System.out.println(refunds);
+        log.info(refunds);
     }
     @Test
     public void closeOrder(){
         String s = wxNativePayTemplate.closeOrder(orderId);
-        System.out.println(s);
+        log.info(s);
     }
 }
 ```

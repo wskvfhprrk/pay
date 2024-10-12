@@ -9,6 +9,7 @@ import com.wechat.pay.contrib.apache.httpclient.auth.WechatPay2Credentials;
 import com.wechat.pay.contrib.apache.httpclient.auth.WechatPay2Validator;
 import com.wechat.pay.contrib.apache.httpclient.cert.CertificatesManager;
 import com.wechat.pay.contrib.apache.httpclient.util.PemUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -23,11 +24,12 @@ import java.security.PrivateKey;
 @Configuration
 @EnableConfigurationProperties(WxPayProperties.class)
 @Import(WebInit.class)
+@Slf4j
 public class WxPayAutoConfiguration {
     @Autowired
     private ApplicationContext applicationContext;
     public CloseableHttpClient httpClient(WxPayProperties wxPayProperties) {
-//        System.out.println("-------->创建了CloseableHttpClient对象");
+//        log.info("-------->创建了CloseableHttpClient对象");
         try {
             // 加载商户私钥（privateKey：私钥字符串）
             PrivateKey merchantPrivateKey = PemUtil
@@ -44,14 +46,14 @@ public class WxPayAutoConfiguration {
             return httpClient;
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("创建httpClient失败：" + e.getMessage());
+            log.error("创建httpClient失败：" + e.getMessage());
         }
         return null;
     }
 
     @Bean
     public WxNativePayTemplate wxNativePayTemplate(WxPayProperties wxPayProperties) {
-//        System.out.println("-------->创建了WxNativePayTemplate对象");
+//        log.info("-------->创建了WxNativePayTemplate对象");
         return new WxNativePayTemplate(wxPayProperties, httpClient(wxPayProperties),applicationContext);
     }
 }

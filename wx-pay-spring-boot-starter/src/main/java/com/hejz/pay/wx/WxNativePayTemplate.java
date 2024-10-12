@@ -250,7 +250,7 @@ public class WxNativePayTemplate {
                 Map map = com.alibaba.fastjson2.JSON.parseObject(s, Map.class);
                 resultMap.put("out_trade_no", map.get("out_trade_no").toString());
                 if (map.get("trade_state").toString().equals("SUCCESS")) {
-//                System.out.println("收到订单：" + map.get("out_trade_no") + "的付款成功");
+//                log.info("收到订单：" + map.get("out_trade_no") + "的付款成功");
                     resultMap.put("out_trade_no", map.get("out_trade_no").toString());
                     //支付成功了处理业务
                     PaySuccessService paySuccessService = applicationContext.getBean(PaySuccessService.class);
@@ -260,7 +260,7 @@ public class WxNativePayTemplate {
                 }
             } catch (GeneralSecurityException e) {
                 e.printStackTrace();
-                System.out.println("解析错误");
+                log.info("解析错误");
                 resultMap.put("cade", "FAIL");
                 resultMap.put("message", "失败");
             }
@@ -274,7 +274,7 @@ public class WxNativePayTemplate {
                 Map map = com.alibaba.fastjson2.JSON.parseObject(s, Map.class);
                 resultMap.put("out_trade_no", map.get("out_trade_no").toString());
                 if (map.get("refund_status").toString().equals("SUCCESS")) {
-//                System.out.println("收到订单：" + map.get("out_trade_no") + "的付款成功");
+//                log.info("收到订单：" + map.get("out_trade_no") + "的付款成功");
                     resultMap.put("out_trade_no", map.get("out_trade_no").toString());
                     //支付成功了处理业务
                     RefundSuccessService refundSuccessService = applicationContext.getBean(RefundSuccessService.class);
@@ -284,7 +284,7 @@ public class WxNativePayTemplate {
                 }
             } catch (GeneralSecurityException e) {
                 e.printStackTrace();
-                System.out.println("解析错误");
+                log.info("解析错误");
                 resultMap.put("cade", "FAIL");
                 resultMap.put("message", "失败");
             }
