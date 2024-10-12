@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PaySuccessServiceImpl implements PaySuccessService {
     @Override
-    public void success(String outTradeNo) {
-        System.out.println(outTradeNo);
+    public void paySuccess(String outTradeNo) {
+        System.out.println("付款成功，订单号：" + outTradeNo);
     }
 }

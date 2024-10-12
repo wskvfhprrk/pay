@@ -8,5 +8,5 @@ public interface PaySuccessService {
      * 订单成功后业务
      * @param outTradeNo
      */
-    void success(String outTradeNo);
+    void paySuccess(String outTradeNo);
 }

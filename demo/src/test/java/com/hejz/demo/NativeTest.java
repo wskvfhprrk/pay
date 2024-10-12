@@ -10,7 +10,7 @@ public class NativeTest {
 
     @Autowired
     private WxNativePayTemplate wxNativePayTemplate;
-    private String orderId="12345678926";
+    private String orderId="12345678931";
     @Test
     public void createOrder(){
         String s = wxNativePayTemplate.createOrder(1, orderId, "订单18");

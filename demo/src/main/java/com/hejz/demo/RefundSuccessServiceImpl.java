@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RefundSuccessServiceImpl implements RefundSuccessService {
     @Override
-    public void success(String outTradeNo) {
-        System.out.println(outTradeNo);
+    public void refundSuccess(String outTradeNo) {
+        System.out.println("退款成功，订单号："+outTradeNo);
     }
 }

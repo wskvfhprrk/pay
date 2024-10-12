@@ -9,5 +9,5 @@ public interface RefundSuccessService {
      * 退款成功后
      * @param outTradeNo 订单号
      */
-    void success(String outTradeNo);
+    void refundSuccess(String outTradeNo);
 }

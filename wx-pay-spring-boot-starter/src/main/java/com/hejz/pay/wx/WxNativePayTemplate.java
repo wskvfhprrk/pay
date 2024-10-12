@@ -254,7 +254,7 @@ public class WxNativePayTemplate {
                     resultMap.put("out_trade_no", map.get("out_trade_no").toString());
                     //支付成功了处理业务
                     PaySuccessService paySuccessService = applicationContext.getBean(PaySuccessService.class);
-                    paySuccessService.success(map.get("out_trade_no").toString());
+                    paySuccessService.paySuccess(map.get("out_trade_no").toString());
                 } else {
                     log.error("收到订单：" + map.get("out_trade_no") + "的付款未成功");
                 }
@@ -278,7 +278,7 @@ public class WxNativePayTemplate {
                     resultMap.put("out_trade_no", map.get("out_trade_no").toString());
                     //支付成功了处理业务
                     RefundSuccessService refundSuccessService = applicationContext.getBean(RefundSuccessService.class);
-                    refundSuccessService.success(map.get("out_trade_no").toString());
+                    refundSuccessService.refundSuccess(map.get("out_trade_no").toString());
                 } else {
                     log.error("收到订单：" + map.get("out_trade_no") + "的付款未成功");
                 }
